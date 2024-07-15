@@ -1,14 +1,14 @@
 # Overview
-This repository contains JavaScript code for a vacation rental website. The code handles various functionalities including search, date selection, guest management, image gallery, sharing options, and more.
+## This repository contains JavaScript code for a vacation rental website. The code handles various functionalities including search, date selection, guest management, image gallery, sharing options, and more.
 
-Features
-Search Functionality: Allows users to search for vacation rentals based on location, dates, and number of guests.
+# Features
+## Search Functionality: Allows users to search for vacation rentals based on location, dates, and number of guests.
 Date Selection: Interactive calendar for selecting check-in and check-out dates.
 Guest Management: Allows users to specify the number of adults, children, infants, and pets.
 Image Gallery: Displays a grid of images with the option to view each image in fullscreen mode.
 Sharing Options: Provides options for sharing the listing via a link and copying the link to the clipboard.
 Heart Button: Allows users to favorite a listing with a heart icon, which persists across sessions using local storage.
-Files
+# Files
 index.html: The HTML structure of the vacation rental website.
 styles.css: CSS styles to define the layout, design, and responsiveness of the website.
 script.js: JavaScript code that implements the interactive functionalities of the website.
