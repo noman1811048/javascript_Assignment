@@ -2,7 +2,8 @@
 ## This repository contains JavaScript code for a vacation rental website. The code handles various functionalities including search, date selection, guest management, image gallery, sharing options, and more.
 
 # Features
-## Search Functionality: Allows users to search for vacation rentals based on location, dates, and number of guests.
+### Search Functionality: 
+Allows users to search for vacation rentals based on location, dates, and number of guests.
 Date Selection: Interactive calendar for selecting check-in and check-out dates.
 Guest Management: Allows users to specify the number of adults, children, infants, and pets.
 Image Gallery: Displays a grid of images with the option to view each image in fullscreen mode.
@@ -15,14 +16,11 @@ script.js: JavaScript code that implements the interactive functionalities of th
 Getting Started
 To run the website locally:
 
-Clone this repository:
+## Clone this repository:
+### git clone https://github.com/noman1811048/javascript_Assignment
+### Open index.html in a web browser.
 
-bash
-Copy code
-git clone https://github.com/noman1811048/javascript_Assignment
-Open index.html in a web browser.
-
-Usage
+# Usage
 Click on the search fields (location, dates, guests) to interact with the search functionality.
 Use the calendar to select check-in and check-out dates.
 Manage the number of guests using the guest modal.
