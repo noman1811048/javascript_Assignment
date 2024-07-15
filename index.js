@@ -18,13 +18,60 @@ const guestsModal = document.getElementById('guestsModal')
 const guestIncrements = document.querySelectorAll('.guest-increment')
 const guestDecrements = document.querySelectorAll('.guest-decrement')
 
+const imageGrid = document.getElementById('imageGrid')
+const fullscreenViewer = document.getElementById('fullscreenViewer')
+const fullscreenImage = document.getElementById('fullscreenImage')
+const closeButton = document.getElementById('closeButton')
+const prevButton = document.getElementById('prevButton')
+const nextButton = document.getElementById('nextButton')
+const imageCounter = document.getElementById('imageCounter')
+
+const shareButton = document.getElementById('shareButton')
+const shareModal = document.getElementById('shareModal')
+const closeModal = shareModal.querySelector('.close')
+const copyLinkButton = document.getElementById('copyLinkButton')
+const listingLink = document.getElementById('listingLink')
+const listingInfo = document
+  .querySelector('.listing-details')
+  .textContent.trim()
+
+
 let guests = {
   adults: 0,
   children: 0,
   infants: 0,
   pets: 0
 }
-//
+
+const images = [
+  './Image/image1.jpg',
+  './Image/image1.jpg',
+  './Image/image1.jpg',
+  './Image/image1.jpg',
+  './Image/image1.jpg'
+]
+
+const months = [
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December'
+]
+let currentDate = new Date()
+let selectedStartDate = null
+let selectedEndDate = null
+
+let isExpanded = false
+
+// Function to show guests modal
 function showGuestsModal() {
   guestsModal.style.display = 'block'
   const rect = guestsInput.getBoundingClientRect()
@@ -33,6 +80,7 @@ function showGuestsModal() {
   guestsModal.style.left = `${rect.left + window.scrollX - marginRight}px`
 }
 
+// Function to update displayed guest counts
 function updateGuestCount() {
   document.getElementById('adultCount').textContent = guests.adults
   document.getElementById('childrenCount').textContent = guests.children
@@ -79,29 +127,12 @@ document.addEventListener('click', event => {
   }
 })
 
-// Initialize the guest count display
+
 updateGuestCount()
 
-const months = [
-  'January',
-  'February',
-  'March',
-  'April',
-  'May',
-  'June',
-  'July',
-  'August',
-  'September',
-  'October',
-  'November',
-  'December'
-]
-let currentDate = new Date()
-let selectedStartDate = null
-let selectedEndDate = null
 
-let isExpanded = false
 
+// Function to expand the navigation bar
 function expandNavbar() {
   if (!isExpanded) {
     searchContainer.classList.add('expanded')
@@ -109,32 +140,36 @@ function expandNavbar() {
   }
 }
 
+// Function to collapse the navigation bar and reset states
 function collapseNavbar() {
-searchContainer.classList.remove('expanded')
-anywhereModal.style.display = 'none'
-calendarModal.style.display = 'none'
-guestsModal.style.display = 'none'
-searchFields.forEach(f => {
-f.classList.remove('active')
-f.value = '' // Clear the input value
-})
-isExpanded = false
+  searchContainer.classList.remove('expanded')
+  anywhereModal.style.display = 'none'
+  calendarModal.style.display = 'none'
+  guestsModal.style.display = 'none'
+  searchFields.forEach(f => {
+    f.classList.remove('active')
+    f.value = '' // Clear the input value
+  })
 
-// Reset guest count
-guests = {
-adults: 0,
-children: 0,
-infants: 0,
-pets: 0
+  isExpanded = false
+
+
+  // Reset guest count
+  guests = {
+    adults: 0,
+    children: 0,
+    infants: 0,
+    pets: 0
+  }
+  updateGuestCount()
+
+  // Reset date selection
+  selectedStartDate = null
+  selectedEndDate = null
+  renderCalendar()
 }
-updateGuestCount()
 
-// Reset date selection
-selectedStartDate = null
-selectedEndDate = null
-renderCalendar()
-}
-
+// Function to show "Anywhere" modal for location selection
 function showModal() {
   anywhereModal.style.display = 'block'
   const rect = whereInput.getBoundingClientRect()
@@ -142,9 +177,10 @@ function showModal() {
   anywhereModal.style.left = `${rect.left + window.scrollX - 420}px`
 }
 
+// Function to show calendar modal for date selection
 function showCalendarModal(input) {
-  const modalWidth = 600 // Set the width of the calendar modal in pixels
-  const marginOffset = 10 // Small margin for fine-tuning the position
+  const modalWidth = 600
+  const marginOffset = 10
   calendarModal.style.display = 'block'
   const rect = input.getBoundingClientRect()
   const leftPosition =
@@ -158,6 +194,7 @@ function showCalendarModal(input) {
   renderCalendar()
 }
 
+// Function to render the calendar grid for the current month
 function renderCalendar() {
   const year = currentDate.getFullYear()
   const month = currentDate.getMonth()
@@ -197,13 +234,15 @@ function renderCalendar() {
   }
 }
 
+
+// Function to select a date on the calendar
 function selectDate(date) {
   if (!selectedStartDate || (selectedStartDate && selectedEndDate)) {
     selectedStartDate = date
     selectedEndDate = null
     checkInInput.value = formatDate(date)
     checkOutInput.value = ''
-    checkOutInput.focus() // Move focus to check-out after selecting check-in date
+    checkOutInput.focus()
   } else {
     if (date > selectedStartDate) {
       selectedEndDate = date
@@ -220,10 +259,10 @@ function selectDate(date) {
   renderCalendar()
 }
 
+// Function to format date into a readable string
 function formatDate(date) {
-  return `${
-    months[date.getMonth()]
-  } ${date.getDate()}, ${date.getFullYear()}`
+  return `${months[date.getMonth()]
+    } ${date.getDate()}, ${date.getFullYear()}`
 }
 
 prevMonthButton.addEventListener('click', (event) => {
@@ -284,7 +323,7 @@ regionItems.forEach(item => {
     whereInput.value = regionName
     anywhereModal.style.display = 'none'
     whereInput.classList.remove('active')
-    checkInInput.focus() 
+    checkInInput.focus()
     event.stopPropagation()
   })
 })
@@ -306,25 +345,6 @@ guestsModal.addEventListener('click', (event) => {
 
 // Initialize the calendar
 renderCalendar()
-
-
-
-const images = [
-  './Image/image1.jpg',
-  './Image/image1.jpg',
-  './Image/image1.jpg',
-  './Image/image1.jpg',
-  './Image/image1.jpg'
-]
-
-const imageGrid = document.getElementById('imageGrid')
-
-const fullscreenViewer = document.getElementById('fullscreenViewer')
-const fullscreenImage = document.getElementById('fullscreenImage')
-const closeButton = document.getElementById('closeButton')
-const prevButton = document.getElementById('prevButton')
-const nextButton = document.getElementById('nextButton')
-const imageCounter = document.getElementById('imageCounter')
 
 let currentImageIndex = 0
 
@@ -380,15 +400,6 @@ function showPrevImage() {
     (currentImageIndex - 1 + images.length) % images.length
   updateFullscreenImage()
 }
-
-const shareButton = document.getElementById('shareButton')
-const shareModal = document.getElementById('shareModal')
-const closeModal = shareModal.querySelector('.close')
-const copyLinkButton = document.getElementById('copyLinkButton')
-const listingLink = document.getElementById('listingLink')
-const listingInfo = document
-  .querySelector('.listing-details')
-  .textContent.trim()
 
 function updateListingLink() {
   const baseUrl = window.location.href.split('?')[0]

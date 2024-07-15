@@ -162,9 +162,6 @@ body {
     display: flex;
 }
 
-
-
-
 .wrapper {
     display: flex;
     align-items: center;
@@ -193,7 +190,6 @@ body {
     border-radius: 24px;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    background-color: red;
 }
 
 
@@ -862,7 +858,6 @@ h2 {
     background: none;
 }
 
-
 .footer {
     display: flex;
     justify-content: space-between;
@@ -1459,26 +1454,27 @@ hr {
         font-size: 18px;
         margin-top: 10px;
     }
-    .subheading{
+
+    .subheading {
         font-size: 12px;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .title{
+    .title {
         display: none;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .actions{
+    .actions {
         display: none;
     }
 }
+
 @media only screen and (max-width: 768px) {
-    .image-grid{
+    .image-grid {
         margin-top: 2%;
     }
-    
-}
 
+}
