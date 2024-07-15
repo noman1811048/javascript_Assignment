@@ -19,6 +19,7 @@ To run the website locally:
 ## Clone this repository:
 ### git clone https://github.com/noman1811048/javascript_Assignment
 ### Open index.html in a web browser.
+### Live site: https://javascript-assignment-seven.vercel.app/
 
 # Usage
 Click on the search fields (location, dates, guests) to interact with the search functionality.
