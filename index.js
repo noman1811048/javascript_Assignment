@@ -24,7 +24,7 @@ let guests = {
   infants: 0,
   pets: 0
 }
-
+//
 function showGuestsModal() {
   guestsModal.style.display = 'block'
   const rect = guestsInput.getBoundingClientRect()
