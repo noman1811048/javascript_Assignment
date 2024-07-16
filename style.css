@@ -251,11 +251,73 @@ body {
     color: inherit;
 }
 
+
 .image-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
     margin-bottom: 2%;
+}
+
+.slider {
+    display: none;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.slider-container {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.slider-container img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.nav-arrows {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.nav-arrow {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.image-counter {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+    .image-grid {
+        display: none;
+    }
+
+    .slider {
+        display: block;
+    }
 }
 
 .heart-button .heart-icon {
